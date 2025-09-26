@@ -1,0 +1,41 @@
+# Step-by-step Docker commands for your image
+
+# 1) Build the image
+docker build -t faizanashraf/first-docker:first-time-working-on-docker .
+
+# Alternative build with simpler name
+docker build -t flask-app .
+
+# 2) Verify images
+docker images
+
+# 3) Tag the image (only if needed)
+docker tag flask-app faizanashraf/first-docker:first-time-working-on-docker
+docker tag first-docker:latest faizanashraf/first-docker:first-time-working-on-docker
+
+# 4) Run interactively
+docker run -it faizanashraf/first-docker:first-time-working-on-docker
+
+# 5) Run with port mapping (Flask/FastAPI on port 5000)
+docker run -p 5000:5000 faizanashraf/first-docker:first-time-working-on-docker
+docker run -p 5000:5000 flask-app
+
+# 6) Run in detached mode with name
+docker run -d -p 5000:5000 --name myapp faizanashraf/first-docker:first-time-working-on-docker
+
+# 7) Check running containers
+docker ps
+
+# 8) View container logs
+docker logs myapp
+
+# 9) Stop and remove container
+docker stop myapp
+docker rm myapp
+
+# 10) Push to Docker Hub
+docker login
+docker push faizanashraf/first-docker:first-time-working-on-docker
+
+# 11) Pull from Docker Hub
+docker pull faizanashraf/first-docker:first-time-working-on-docker
